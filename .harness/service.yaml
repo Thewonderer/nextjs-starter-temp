@@ -1,0 +1,34 @@
+service:
+  name: __APP_NAME__
+  identifier: __APP_IDENTIFIER__
+  serviceDefinition:
+    type: Kubernetes
+    spec:
+      manifests:
+        - manifest:
+            identifier: k8s_manifests
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: account.github_demo_connector
+                  gitFetchType: Branch
+                  branch: main
+                  paths:
+                    - k8s/deployment.yaml
+              skipResourceVersioning: false
+      artifacts:
+        primary:
+          primaryArtifactRef: nextjs_image
+          sources:
+            - identifier: nextjs_image
+              spec:
+                connectorRef: account.docker_hub_connector
+                imagePath: __DOCKER_IMAGE_PATH__
+                tag: <+input>
+              type: DockerRegistry
+      variables:
+        - name: replicas
+          type: String
+          value: "3"
