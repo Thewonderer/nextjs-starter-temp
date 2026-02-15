@@ -1,3 +1,4 @@
+{% raw %}
 export default function Home() {
   return (
     <div style={{ padding: '50px', textAlign: 'center' }}>
@@ -13,3 +14,4 @@ export default function Home() {
     </div>
   );
 }
+{% endraw %}
