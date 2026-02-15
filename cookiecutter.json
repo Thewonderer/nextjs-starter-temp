@@ -1,0 +1,6 @@
+{
+  "app_name": "my-app",
+  "owner": "team",
+  "description": "An app",
+  "docker_image": "org/app"
+}
